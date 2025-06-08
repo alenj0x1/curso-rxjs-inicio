@@ -11,3 +11,16 @@ const observer: Observer<string> = {
     console.info("completed");
   },
 };
+
+const obs$ = new Observable<string>((subs) => {
+  subs.next("taka");
+  subs.next("taka 2");
+
+  subs.complete();
+
+  subs.next("taka");
+});
+
+obs$.subscribe(observer); // observer or next directly
+
+obs$.subscribe();
